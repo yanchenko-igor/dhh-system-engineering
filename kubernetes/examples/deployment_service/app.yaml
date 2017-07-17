@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: example-app
+  labels:
+    name: example-app
+spec:
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 50%
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        name: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: 250m
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        env:
+          - name: MY_VAR
+            value: my_value
