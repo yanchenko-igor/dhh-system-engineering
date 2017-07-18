@@ -4,7 +4,7 @@ Creates per AZ NAT gateways with elastic IPs, subnets and a route table.
 
 ## Example
 
-```
+```hcl
 module "nat_gateway" {
   source                   = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/nat_gateway"
   vpc_id                   = "${module.vpc1.vpc_id}"

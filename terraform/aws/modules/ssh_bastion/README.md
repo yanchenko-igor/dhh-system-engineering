@@ -4,7 +4,7 @@ Creates and autoscaling group, security groups, IAM policy, EIP and user-data to
 
 ## Example
 
-```
+```hcl
 module "ssh_bastion" {
   source                = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/ssh_bastion"
   vpc_id                = "${module.vpc1.vpc_id}"

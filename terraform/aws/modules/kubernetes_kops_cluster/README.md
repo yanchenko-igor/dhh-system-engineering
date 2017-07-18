@@ -16,7 +16,7 @@ Pull requests welcome.
 
 ## Example
 
-```
+```hcl
 module "cluster1" {
   source                      = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/kubernetes_kops_cluster/module"
   sg_allow_ssh                = "${aws_security_group.allow_ssh.id}"

@@ -4,7 +4,7 @@ An example of an autoscaling group and ELB. Should be customised to suit.
 
 ## Example
 
-```
+```hcl
 module "asg_app_1" {
   source                = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/autoscaling_group_elb_app"
   aws_region            = "${var.aws_region}"

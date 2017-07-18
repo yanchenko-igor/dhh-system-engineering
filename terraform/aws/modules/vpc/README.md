@@ -6,7 +6,7 @@ Creates a VPC, public and private subnets for each AZ, route tables and internet
 
 Single VPC:
 
-```
+```hcl
 module "main_vpc" {
   source = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/vpc"
 }
@@ -14,7 +14,7 @@ module "main_vpc" {
 
 Multiple VPCs:
 
-```
+```hcl
 module "vpc1" {
   source         = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/vpc"
   vpc_name       = "vpc1"
