@@ -6,13 +6,13 @@ More info here: http://dev.splunk.com/view/event-collector/SP-CAAAE6Y
 
 ## Example
 
-```
+```hcl
 data "aws_caller_identity" "current" {}
 
 module "log_forwarder" {
-  source                = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/lambda_splunk_forwarder"
-  splunk_hec_token      = "xxxxxxxxxxxxxx"
-  splunk_hec_url        = "https://my.splunk.host.com/services/collector"
+  source           = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/lambda_splunk_forwarder"
+  splunk_hec_token = "xxxxxxxxxxxxxx"
+  splunk_hec_url   = "https://my.splunk.host.com/services/collector"
 }
 
 resource "aws_cloudwatch_log_group" "cloudwatch_log_group_1" {
