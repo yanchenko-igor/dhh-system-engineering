@@ -40,6 +40,14 @@ Pull requests welcome!
 
 - [Deployment and Service](kubernetes/examples/deployment_service): A simple example of a Kubernetes deployment, different service types and a horizontal pod autoscaler.
 
+## Other useful tools
+
+### Keymaker - Lightweight SSH key management on AWS EC2
+
+https://github.com/kislyuk/keymaker
+
+Add public SSH keys to IAM users and then they can log into EC2 hosts.
+
 ## Dos and Don'ts
 
 - Do make pull requests to this repository.
