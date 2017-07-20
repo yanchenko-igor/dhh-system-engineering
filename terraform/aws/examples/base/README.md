@@ -8,6 +8,7 @@ Features:
   - Internal Route53 zone
   - SSH bastion for all SSH connections
   - Default security groups to allow SSH from trusted list of IPs (`office_ips` variable)
+  - Cloudtrail enabled
 
 ## Get started
 

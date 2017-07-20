@@ -4,6 +4,7 @@ resource "random_id" "s3_suffix" {
 
 resource "aws_s3_bucket" "kops" {
   bucket        = "kops-state-store-${random_id.s3_suffix.dec}"
+  force_destroy = true
   acl           = "private"
   versioning {
     enabled = true

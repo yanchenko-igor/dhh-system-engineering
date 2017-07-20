@@ -1,0 +1,5 @@
+python-packages
+*.pyc
+__pycache__
+
+kube_config
