@@ -29,7 +29,7 @@ docker run -it --volume=$PWD/python-packages:/python-packages python:3.6 bash -c
 
 Create the `kube_config` file by copying the data from `~/.kube/config` on your own computer. e.g.
 
-```
+```yaml
 clusters:
 - cluster:
     certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0...

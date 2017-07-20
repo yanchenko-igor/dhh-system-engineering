@@ -1,7 +1,3 @@
 *terraform.tfstate*
 .terraform
 *.zip
-
-python-packages
-*.pyc
-__pycache__
