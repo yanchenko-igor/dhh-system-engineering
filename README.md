@@ -42,11 +42,15 @@ Pull requests welcome!
 
 ## Other useful tools
 
-### Keymaker - Lightweight SSH key management on AWS EC2
+#### Keymaker
+
+Lightweight SSH key management on AWS EC2. Add public SSH keys to IAM users and then they can log into EC2 hosts.
 
 https://github.com/kislyuk/keymaker
 
-Add public SSH keys to IAM users and then they can log into EC2 hosts.
+#### Elasticsearch on Kubernetes
+
+https://github.com/pires/kubernetes-elasticsearch-cluster
 
 ## Dos and Don'ts
 
