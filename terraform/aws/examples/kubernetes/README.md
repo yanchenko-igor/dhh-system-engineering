@@ -11,6 +11,8 @@ Set your AWS region and `office_ips` in `variables.tf` if required.
 Run:
 
 ```
+export AWS_ACCESS_KEY_ID=AKIAJJJJJJJJJJJJ
+export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXX
 terraform get
 terraform init
 terraform plan

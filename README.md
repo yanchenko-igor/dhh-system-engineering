@@ -1,6 +1,6 @@
 # Delivery Hero System Engineering
 
-This repository contains [Terraform](https://www.terraform.io/) modules and best practice examples to give a head start when building a new AWS environment.
+This repository contains [Terraform](https://www.terraform.io/) modules and best practice examples to give a head start when building a new AWS or GCP environment.
 
 The intended audience is teams or projects that are starting with AWS and want to begin with a good design.
 
@@ -38,7 +38,7 @@ Pull requests welcome!
 
 ### Examples
 
-- [Deployment and Service](kubernetes/examples/deployment_service): A simple example of a Kubernetes deployment, different service types and a horizontal pod autoscaler.
+- [Deployment, Service and Autoscaling](kubernetes/examples/deployment_service): A simple example of a Kubernetes deployment, different service types and a horizontal pod autoscaler.
 
 ## Other useful tools
 
@@ -52,6 +52,12 @@ https://github.com/kislyuk/keymaker
 
 https://github.com/pires/kubernetes-elasticsearch-cluster
 
+#### Invokust
+
+Run [Locust](http://locust.io/) load tests on AWS Lambda.
+
+https://github.com/FutureSharks/invokust
+
 ## Dos and Don'ts
 
 - Do make pull requests to this repository.
@@ -62,3 +68,4 @@ https://github.com/pires/kubernetes-elasticsearch-cluster
 - Do use a SSH bastion for all SSH connections and restrict SSH access by IP ranges.
 - Consider registering an external domain in Route53. It only costs a few dollars and you can have a free SSL certificate. Then use this domain and certificate for all external ELBs.
 - Don't have instances that are not part of an Austoscaling Group.
+- Do write [Terraform modules](https://www.terraform.io/docs/configuration/modules.html) to reduce duplicated code.
