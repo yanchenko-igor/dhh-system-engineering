@@ -10,13 +10,14 @@ resource "aws_nat_gateway" "nat_gateway" {
 }
 
 resource "aws_route_table" "nat_private" {
+  count  = "${length(data.aws_availability_zones.available.names)}"
   vpc_id = "${var.vpc_id}"
   route {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = "${element(aws_nat_gateway.nat_gateway.*.id, count.index)}"
   }
   tags {
-    "Name" = "nat_private"
+    "Name" = "nat_private ${element(split(",", "a,b,c"), count.index)}"
   }
 }
 
@@ -33,6 +34,6 @@ resource "aws_subnet" "nat_private" {
 
 resource "aws_route_table_association" "nat_gateway_private" {
   count          = "${length(data.aws_availability_zones.available.names)}"
-  route_table_id = "${aws_route_table.nat_private.id}"
+  route_table_id = "${element(aws_route_table.nat_private.*.id, count.index)}"
   subnet_id      = "${element(aws_subnet.nat_private.*.id, count.index)}"
 }
