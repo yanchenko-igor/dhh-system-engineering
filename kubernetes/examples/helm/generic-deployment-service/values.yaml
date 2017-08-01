@@ -1,0 +1,9 @@
+image:
+  repository: "nginx"
+  tag: "latest"
+
+deployment:
+  replicas: 1
+
+service:
+  port: 80

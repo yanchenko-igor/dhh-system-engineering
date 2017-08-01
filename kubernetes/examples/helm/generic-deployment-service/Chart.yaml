@@ -1,0 +1,3 @@
+name: generic-deployment-service
+version: 0.1
+description: A generic chart to create a deployment and associated ClusterIP service

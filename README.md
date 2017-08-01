@@ -1,8 +1,8 @@
 # Delivery Hero System Engineering
 
-This repository contains [Terraform](https://www.terraform.io/) modules and best practice examples to give a head start when building a new AWS or GCP environment.
+This repository contains [Terraform](https://www.terraform.io/) modules, Kubernetes configuration and other best practice examples to give a head start when building a new AWS or GCP environment.
 
-The intended audience is teams or projects that are starting with AWS and want to begin with a good design.
+The intended audience is teams or projects that are starting with AWS/GCP or Kubernetes and want to begin with a good design.
 
 Pull requests welcome!
 
@@ -40,6 +40,8 @@ Pull requests welcome!
 
 - [Deployment, Service and Autoscaling](kubernetes/examples/deployment_service): A simple example of a Kubernetes deployment, different service types and a horizontal pod autoscaler.
 
+- [Helm templating](kubernetes/examples/helm): A simple example using Helm to template Kubernetes resources.
+
 ## Other useful tools
 
 #### Keymaker
@@ -57,6 +59,10 @@ https://github.com/pires/kubernetes-elasticsearch-cluster
 Run [Locust](http://locust.io/) load tests on AWS Lambda.
 
 https://github.com/FutureSharks/invokust
+
+#### Helm
+
+[Helm](https://github.com/kubernetes/helm) is a powerful tool for creating templates for Kubernetes resources, creating reproducible builds or for packaging and installing predefined configurations for services.
 
 ## Dos and Don'ts
 
