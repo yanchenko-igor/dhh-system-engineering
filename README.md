@@ -14,7 +14,7 @@ Pull requests welcome!
 - [kubernetes_kops_cluster](terraform/aws/modules/kubernetes_kops_cluster): A Kubernetes cluster with multi-AZ master based on [kops](https://github.com/kubernetes/kops).
 - [lambda_kubernetes_deployer](terraform/aws/modules/lambda_kubernetes_deployer): A lambda function that deploys to a Kubernetes cluster when a container image is pushed to an ECR repository.
 - [lambda_splunk_forwarder](terraform/aws/modules/lambda_splunk_forwarder): A lambda function for forwarding Cloudwatch logs to a Splunk HTTP events collector.
-- [nat_gateway](terraform/aws/modules/nat_gateway): NAT gateway.
+- [nat_gateway](terraform/aws/modules/nat_gateway): Creates multi-AZ NAT gateways, associated private subnets and route tables.
 - [ssh_bastion](terraform/aws/modules/ssh_bastion): SSH bastion host in an ASG with a fixed EIP.
 - [vpc](terraform/aws/modules/vpc): A VPC setup that includes public and private subnets for each AZ, route tables.
 
