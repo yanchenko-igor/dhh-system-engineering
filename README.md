@@ -42,6 +42,8 @@ Pull requests welcome!
 
 - [Helm templating](kubernetes/examples/helm): A simple example using Helm to template Kubernetes resources.
 
+- [Kubernetes Best Practices](https://speakerdeck.com/thesandlord/kubernetes-best-practices): A great presentation from a Google engineer.
+
 ## Other useful tools
 
 #### Keymaker
