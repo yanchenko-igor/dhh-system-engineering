@@ -1,14 +1,12 @@
 # Delivery Hero System Engineering
 
-This repository contains [Terraform](https://www.terraform.io/) modules, Kubernetes configuration and other best practice examples to give a head start when building a new AWS or GCP environment.
+This repository contains [Terraform](https://www.terraform.io/) modules, Kubernetes configuration and other best practice examples to give a head start when building a new environment on AWS or Kubernetes.
 
-The intended audience is teams or projects that are starting with AWS/GCP or Kubernetes and want to begin with a good design.
+The intended audience is teams or projects that are starting with AWS or Kubernetes and want to begin with a good design.
 
 Pull requests welcome!
 
-## AWS
-
-### Terraform modules
+## Terraform modules
 
 - [autoscaling_group_elb_app](terraform/aws/modules/autoscaling_group_elb_app): An example of EC2 autoscaling group and ELB.
 - [kubernetes_kops_cluster](terraform/aws/modules/kubernetes_kops_cluster): A Kubernetes cluster with multi-AZ master based on [kops](https://github.com/kubernetes/kops).
@@ -18,25 +16,12 @@ Pull requests welcome!
 - [ssh_bastion](terraform/aws/modules/ssh_bastion): SSH bastion host in an ASG with a fixed EIP.
 - [vpc](terraform/aws/modules/vpc): A VPC setup that includes public and private subnets for each AZ, route tables.
 
-### Examples
+## Examples
 
 - [base](terraform/aws/examples/base): A good starting point with a VPC and related resources, SSH bastion, some default security groups and S3 bucket for Terraform state.
 - [kubernetes](terraform/aws/examples/kubernetes): Same as `base` example but with shared kubernetes resources and 2 kubernetes clusters added.
 
-## GCP
-
-### Terraform modules
-
-- [splunk_logging](terraform/gcp/modules/splunk_logging): PubSub, service account and IAM policy to allow Splunk to pull logs from GKE/GCP.
-
-### Examples
-
-- [GKE Cluster](terraform/gcp/examples/gke_cluster.tf): A Container Engine cluster with autoscaling enabled
-- [terraform](terraform/gcp/examples/terraform.tf): Remote state stored on a Google Storage Bucket
-
-## Kubernetes
-
-### Examples
+## Kubernetes Examples
 
 - [Deployment, Service and Autoscaling](kubernetes/examples/deployment_service): A simple example of a Kubernetes deployment, different service types and a horizontal pod autoscaler.
 
@@ -70,6 +55,7 @@ https://github.com/FutureSharks/invokust
 
 - Do make pull requests to this repository.
 - Don't bother using a NAT gateway unless you specifically need a fixed source IP address for outgoing traffic.
+- Do enable [MFA](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) for your IAM accounts.
 - Do store your Terraform state in a bucket.
 - Do use an internal Route53 zone to hold records for RDS endpoints, ES endpoints, Elasticache endpoints etc.
 - Do terminate SSL on ELBs and forward as HTTP in VPC. This means you never need to deal with SSL or certificates on instances.
