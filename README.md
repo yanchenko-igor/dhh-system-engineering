@@ -27,6 +27,8 @@ Pull requests welcome!
 
 - [Helm templating](kubernetes/examples/helm): A simple example using Helm to template Kubernetes resources.
 
+- [Ingress Controller](kubernetes/examples/ingress): Using an Ingress controller and resource to split traffic across multiple applications.
+
 - [Kubernetes Best Practices](https://speakerdeck.com/thesandlord/kubernetes-best-practices): A great presentation from a Google engineer.
 
 ## Other useful tools

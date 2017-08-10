@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+spec:
+  rules:
+  - host: app1.domain.com
+    http:
+      paths:
+      - backend:
+          serviceName: app1
+          servicePort: 80
+  - host: app2.domain.com
+    http:
+      paths:
+      - backend:
+          serviceName: app2
+          servicePort: 80
+  - host: app3.domain.com
+    http:
+      paths:
+      - path: /frontend
+        backend:
+          serviceName: app3-frontend
+          servicePort: 80
+      - path: /backend
+        backend:
+          serviceName: app3-backend
+          servicePort: 80

@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app3-backend
+  labels:
+    name: app3-backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: app3-backend
+    spec:
+      containers:
+      - name: app3-backend
+        image: nginx:latest
+        ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-backend
+  labels:
+    name: app3-backend
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+  selector:
+    name: app3-backend
