@@ -31,6 +31,8 @@ Pull requests welcome!
 
 - [Kubernetes Best Practices](https://speakerdeck.com/thesandlord/kubernetes-best-practices): A great presentation from a Google engineer.
 
+- [Kubernetes Autoscaling](kubernetes/examples/autoscaling): How to set up autoscaling for both deployment and cluster nodes.
+
 ## Other useful tools
 
 #### Keymaker

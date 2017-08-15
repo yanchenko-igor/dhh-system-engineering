@@ -6,11 +6,6 @@ metadata:
     name: example-app
 spec:
   replicas: 4
-  strategy:
-    rollingUpdate:
-      maxUnavailable: 50%
-      maxSurge: 50%
-  revisionHistoryLimit: 10
   template:
     metadata:
       labels:
@@ -19,10 +14,6 @@ spec:
       containers:
       - name: example-app
         image: nginx:latest
-        resources:
-          requests:
-            cpu: 250m
-        imagePullPolicy: Always
         ports:
           - containerPort: 80
         env:
