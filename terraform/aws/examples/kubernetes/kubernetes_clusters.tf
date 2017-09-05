@@ -9,8 +9,18 @@ module "cluster1" {
   kops_s3_bucket_id           = "${aws_s3_bucket.kops.id}"
   vpc_id                      = "${module.vpc1.vpc_id}"
   instance_key_name           = "default-key"
-  vpc_public_subnet_ids       = ["${module.vpc1.vpc_public_subnet_ids}"]
-  vpc_private_subnet_ids      = ["${module.vpc1.vpc_private_subnet_ids}"]
+  route_table_public_id       = "${module.vpc1.public_aws_route_table_id}"
+  route_table_private_id      = "${module.vpc1.private_aws_route_table_id}"
+  subnet_cidr_blocks_public   = [
+    "172.20.23.0/24",
+    "172.20.12.0/24",
+    "172.20.13.0/24"
+  ]
+  subnet_cidr_blocks_private  = [
+    "172.20.14.0/24",
+    "172.20.15.0/24",
+    "172.20.16.0/24"
+  ]
   node_asg_desired            = 3
   node_asg_min                = 3
   node_asg_max                = 3
@@ -31,8 +41,18 @@ module "cluster2" {
   kops_s3_bucket_id           = "${aws_s3_bucket.kops.id}"
   vpc_id                      = "${module.vpc1.vpc_id}"
   instance_key_name           = "default-key"
-  vpc_public_subnet_ids       = ["${module.vpc1.vpc_public_subnet_ids}"]
-  vpc_private_subnet_ids      = ["${module.vpc1.vpc_private_subnet_ids}"]
+  route_table_public_id       = "${module.vpc1.public_aws_route_table_id}"
+  route_table_private_id      = "${module.vpc1.private_aws_route_table_id}"
+  subnet_cidr_blocks_public   = [
+    "172.20.17.0/24",
+    "172.20.18.0/24",
+    "172.20.19.0/24"
+  ]
+  subnet_cidr_blocks_private  = [
+    "172.20.20.0/24",
+    "172.20.21.0/24",
+    "172.20.22.0/24"
+  ]
   node_asg_desired            = 2
   node_asg_min                = 2
   node_asg_max                = 2
