@@ -17,3 +17,9 @@ output "vpc_public_subnet_ids" {
 output "vpc_private_subnet_ids" {
   value = ["${aws_subnet.private.*.id}"]
 }
+output "private_aws_route_table_id" {
+  value = "${aws_route_table.private.id}"
+}
+output "public_aws_route_table_id" {
+  value = "${aws_route_table.public.id}"
+}
