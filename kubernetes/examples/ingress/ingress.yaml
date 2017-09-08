@@ -7,8 +7,13 @@ spec:
   - host: app1.domain.com
     http:
       paths:
-      - backend:
-          serviceName: app1
+      - path: /frontend
+        backend:
+          serviceName: app1-frontend
+          servicePort: 80
+      - path: /backend
+        backend:
+          serviceName: app1-backend
           servicePort: 80
   - host: app2.domain.com
     http:
@@ -19,11 +24,6 @@ spec:
   - host: app3.domain.com
     http:
       paths:
-      - path: /frontend
-        backend:
-          serviceName: app3-frontend
-          servicePort: 80
-      - path: /backend
-        backend:
-          serviceName: app3-backend
+      - backend:
+          serviceName: app3
           servicePort: 80

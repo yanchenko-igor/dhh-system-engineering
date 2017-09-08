@@ -1,32 +1,33 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: app3-frontend
+  name: app3
   labels:
-    name: app3-frontend
+    name: app3
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: app3-frontend
+        name: app3
     spec:
       containers:
-      - name: app3-frontend
-        image: nginx:latest
+      - name: app3
+        image: hashicorp/http-echo:latest
+        command: ["/http-echo", "-listen=:80", "-text=app3"]
         ports:
           - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: app3-frontend
+  name: app3
   labels:
-    name: app3-frontend
+    name: app3
 spec:
   ports:
     - name: http
       port: 80
       protocol: TCP
   selector:
-    name: app3-frontend
+    name: app3

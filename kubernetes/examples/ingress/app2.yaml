@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
       - name: app2
-        image: nginx:latest
+        image: hashicorp/http-echo:latest
+        command: ["/http-echo", "-listen=:80", "-text=app2"]
         ports:
           - containerPort: 80
 ---
