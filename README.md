@@ -6,6 +6,10 @@ The intended audience is teams or projects that are starting with AWS or Kuberne
 
 Pull requests welcome!
 
+## Guides
+
+- [terraform-kubernetes-getting-started](docs/terraform-kubernetes-getting-started.md): A guide to getting start with Kubernetes on AWS using Terraform. Includes Kubernetes configuration and running an example application.
+
 ## Terraform modules
 
 - [autoscaling_group_elb_app](terraform/aws/modules/autoscaling_group_elb_app): An example of EC2 autoscaling group and ELB.
@@ -28,6 +32,8 @@ Pull requests welcome!
 - [Helm templating](kubernetes/examples/helm): A simple example using Helm to template Kubernetes resources.
 
 - [Ingress Controller](kubernetes/examples/ingress): Using an Ingress controller and resource to split traffic across multiple applications.
+
+- [ExternalDNS](kubernetes/examples/external-dns): A tool that automatically creates DNS records for Kubernetes resources.
 
 - [Kubernetes Best Practices](https://speakerdeck.com/thesandlord/kubernetes-best-practices): A great presentation from a Google engineer.
 

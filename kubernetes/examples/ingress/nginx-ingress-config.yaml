@@ -3,10 +3,17 @@ defaultBackend:
     kubernetes.io/role: node
   replicaCount: 2
 controller:
+  extraArgs:
+    # Update service name here if required
+    publish-service: default/ingress1-nginx-ingress-controller
+  image:
+    tag: 0.9.0-beta.12
   nodeSelector:
     kubernetes.io/role: node
   kind: DaemonSet
   service:
+    targetPorts:
+      https: 80
     annotations:
       service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-1:9999999999:certificate/xxxxxxxxxxxxx
       external-dns.alpha.kubernetes.io/hostname: ingress1.my-domain.com

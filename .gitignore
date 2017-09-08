@@ -1,3 +1,6 @@
 *terraform.tfstate*
 .terraform
 *.zip
+
+# Ignore this as it's used in docs/terraform-kubernetes-getting-started.md
+terraform/aws/examples/tf-kubernetes-example

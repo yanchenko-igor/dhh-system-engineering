@@ -128,5 +128,6 @@ This configuration will:
 
 - Ensure there is 2 pods for the default backend running
 - Run the controller as a DaemonSet on cluster nodes
-- Add HTTP and HTTP listeners to the ELB and use a certificate from ACM
+- Terminate SSL on the ELB using a certificate from ACM
 - Automatically create a DNS record for the ELB in Route53 using [ExternalDNS](https://github.com/deliveryhero/dhh-system-engineering/tree/master/kubernetes/examples/external-dns)
+- Set `publish-service` option so that ExternalDNS records are created correctly

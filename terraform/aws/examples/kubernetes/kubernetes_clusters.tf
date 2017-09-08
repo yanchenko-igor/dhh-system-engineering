@@ -23,7 +23,7 @@ module "cluster1" {
   ]
   node_asg_desired            = 3
   node_asg_min                = 3
-  node_asg_max                = 3
+  node_asg_max                = 20
   master_instance_type        = "t2.small"
   node_instance_type          = "t2.small"
   master_iam_instance_profile = "${aws_iam_instance_profile.kubernetes_masters.id}"
@@ -55,7 +55,7 @@ module "cluster2" {
   ]
   node_asg_desired            = 2
   node_asg_min                = 2
-  node_asg_max                = 2
+  node_asg_max                = 20
   master_instance_type        = "t2.small"
   node_instance_type          = "t2.small"
   master_iam_instance_profile = "${aws_iam_instance_profile.kubernetes_masters.id}"
