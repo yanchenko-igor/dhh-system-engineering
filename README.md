@@ -8,7 +8,7 @@ Pull requests welcome!
 
 ## Guides
 
-- [terraform-kubernetes-getting-started](docs/terraform-kubernetes-getting-started.md): A guide to getting start with Kubernetes on AWS using Terraform. Includes Kubernetes configuration and running an example application.
+- [terraform-kubernetes-getting-started](docs/terraform-kubernetes-getting-started.md): A guide to getting started with Kubernetes on AWS using Terraform. Includes AWS and Kubernetes configuration and running an example application.
 
 ## Terraform modules
 

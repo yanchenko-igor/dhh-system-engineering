@@ -1,4 +1,4 @@
-# Kubernetes node and deployment autoscaling
+# Kubernetes node and pod autoscaling
 
 Pod and cluster node autoscaling are configured separately and operate in different ways.
 

@@ -38,7 +38,6 @@ Configure AWS credentials and initialise Terraform:
 export AWS_ACCESS_KEY_ID=AKIAJJJJJJJJJJJJ
 export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXX
 terraform init
-terraform get
 ```
 
 #### DNS and SSL setup
@@ -67,7 +66,7 @@ After all the AWS resources have been created and the Kubernetes master and node
 Ensure that the master ELB has all instances `InService`:
 
 ```
-$ aws elb describe-instance-health --load-balancer-name cluster1-master
+aws elb describe-instance-health --load-balancer-name cluster1-master
 {
     "InstanceStates": [
         {
