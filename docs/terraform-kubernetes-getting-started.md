@@ -13,6 +13,24 @@ In this guide we will create a Kubernetes cluster on AWS, all associated resourc
 
 ### Create AWS resources using Terraform
 
+#### Install required tools
+
+You need to install these components on your computer:
+
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)
+- [helm](https://docs.helm.sh/)
+- [kops](https://github.com/kubernetes/kops)
+
+For Mac using [homebrew](https://brew.sh/):
+
+```
+brew install awscli
+brew install kubectl
+brew install kubernetes-helm
+brew install kops
+```
+
 #### Initial customisation
 
 We will create everything in the direcory `terraform/aws/examples/tf-kubernetes-example`.
