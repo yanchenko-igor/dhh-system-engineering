@@ -25,7 +25,7 @@ resource "aws_security_group" "app_instances" {
 resource "aws_security_group" "app_elb" {
   name        = "${var.app_name}_app_elb"
   vpc_id      = "${var.vpc_id}"
-  description = "CI ELB"
+  description = "App ELB ${var.app_name}"
   egress {
     from_port   = 0
     to_port     = 0

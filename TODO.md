@@ -5,3 +5,4 @@
 - Write a module for IAM users?
 - Write example RBAC for Kubernetes
 - Write example for Oauth
+- Adding variables for name of DNS record and instance
