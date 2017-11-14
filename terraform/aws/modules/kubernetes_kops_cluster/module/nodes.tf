@@ -5,10 +5,10 @@ resource "aws_autoscaling_group" "node" {
   max_size             = "${var.node_asg_max}"
   min_size             = "${var.node_asg_min}"
   desired_capacity     = "${var.node_asg_desired}"
-  vpc_zone_identifier  = ["${aws_subnet.public.*.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.k8s.*.id}"]
 
   # Ignore changes to autoscaling group min/max/desired as these attributes are
-  # managed by the Kubernetes cluster autoscaler
+  # managed by the Kubernetes cluster autoscaler addon
   lifecycle {
       ignore_changes = [
         "max_size",
@@ -55,7 +55,7 @@ data "template_file" "node_user_data" {
 
 resource "aws_launch_configuration" "node" {
   name_prefix                 = "${var.cluster_name}-node"
-  image_id                    = "${data.aws_ami.k8s_1_7_debian_jessie_ami.id}"
+  image_id                    = "${data.aws_ami.k8s_ami.id}"
   instance_type               = "${var.node_instance_type}"
   key_name                    = "${var.instance_key_name}"
   iam_instance_profile        = "${var.node_iam_instance_profile}"
@@ -64,7 +64,6 @@ resource "aws_launch_configuration" "node" {
     "${var.sg_allow_ssh}"
   ]
 
-  associate_public_ip_address = true
   user_data                   = "${file("${path.module}/data/user_data.sh")}${data.template_file.node_user_data.rendered}"
 
   root_block_device = {
