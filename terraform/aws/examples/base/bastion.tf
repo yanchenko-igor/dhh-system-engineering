@@ -1,5 +1,6 @@
 module "ssh_bastion" {
   source                  = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/ssh_bastion"
+  name                    = "example"
   vpc_id                  = "${module.vpc1.vpc_id}"
   instance_ami_id         = "${data.aws_ami.ubuntu_xenial_ami.id}"
   instance_key_name       = "default-key"

@@ -4,14 +4,14 @@ resource "aws_eip" "bastion_eip" {
 
 resource "aws_route53_record" "bastion_eip" {
   zone_id = "${var.route53_zone_id}"
-  name    = "bastion"
+  name    = "bastion-${var.name}"
   type    = "A"
   ttl     = "300"
   records = ["${aws_eip.bastion_eip.public_ip}"]
 }
 
 resource "aws_autoscaling_group" "bastion" {
-  name                 = "bastion"
+  name                 = "bastion-${var.name}"
   depends_on           = ["aws_launch_configuration.bastion"]
   vpc_zone_identifier  = ["${var.vpc_public_subnet_ids}"]
   max_size             = 1
@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "bastion" {
   launch_configuration = "${aws_launch_configuration.bastion.name}"
   tag {
     key                 = "Name"
-    value               = "bastion"
+    value               = "bastion-${var.name}"
     propagate_at_launch = "true"
   }
   tag {
@@ -45,7 +45,7 @@ data "template_file" "bastion_associate_eip" {
 }
 
 resource "aws_launch_configuration" "bastion" {
-  name_prefix          = "bastion-"
+  name_prefix          = "bastion-${var.name}-"
   image_id             = "${var.instance_ami_id}"
   instance_type        = "${var.instance_type}"
   security_groups      = ["${aws_security_group.bastion.id}"]

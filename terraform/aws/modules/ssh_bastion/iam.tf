@@ -1,11 +1,11 @@
 
 resource "aws_iam_instance_profile" "bastion_instance_profile" {
-  name = "bastion_instance_profile"
+  name = "bastion_instance_profile-${var.name}"
   role = "${aws_iam_role.bastion_ec2_role.name}"
 }
 
 resource "aws_iam_role" "bastion_ec2_role" {
-  name               = "bastion_ec2_role"
+  name               = "bastion_ec2_role-${var.name}"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -24,7 +24,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "bastion_ec2_role_policy" {
-  name   = "bastion-ec2-role-policy"
+  name   = "bastion-ec2-role-policy-${var.name}"
   role   = "${aws_iam_role.bastion_ec2_role.id}"
   policy = <<EOF
 {

@@ -8,6 +8,7 @@ Creates and autoscaling group, security groups, IAM policy, EIP and user-data to
 module "ssh_bastion" {
   source                = "github.com/deliveryhero/dhh-system-engineering/terraform/aws/modules/ssh_bastion"
   vpc_id                = "${module.vpc1.vpc_id}"
+  name                  = "staging"
   instance_ami_id       = "${data.aws_ami.ubuntu_xenial_ami.id}"
   instance_key_name     = "default-key"
   allow_ssh_sg_id       = "${aws_security_group.allow_ssh_from_office_ips.id}"

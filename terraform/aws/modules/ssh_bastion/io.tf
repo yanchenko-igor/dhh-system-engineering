@@ -1,3 +1,5 @@
+# A unique name for this bastion
+variable "name" {}
 variable "vpc_id" {}
 variable "route53_zone_id" {}
 variable "instance_ami_id" {}
@@ -14,7 +16,6 @@ variable "instance_type" {
 variable "extra_user_data" {
   default = ""
 }
-
 output "bastion_sg_id" {
   value = "${aws_security_group.bastion.id}"
 }

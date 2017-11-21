@@ -8,9 +8,9 @@ resource "aws_security_group_rule" "allow_ssh_ssh_cidr_blocks" {
 }
 
 resource "aws_security_group" "bastion" {
-  name_prefix = "bastion-"
+  name_prefix = "bastion-${var.name}-"
   vpc_id      = "${var.vpc_id}"
-  description = "Bastion instance"
+  description = "Bastion instance (${var.name})"
   egress {
     from_port   = 0
     to_port     = 0
@@ -21,14 +21,14 @@ resource "aws_security_group" "bastion" {
     create_before_destroy = true
   }
   tags {
-    Name = "bastion"
+    Name = "bastion-${var.name}"
   }
 }
 
 resource "aws_security_group" "allow_ssh_from_bastion" {
-  name        = "allow_ssh_from_bastion"
+  name        = "allow_ssh_from_bastion-${var.name}"
   vpc_id      = "${var.vpc_id}"
-  description = "Allows SSH access from bastion security host"
+  description = "Allows SSH access from bastion security host (${var.name})"
   ingress {
     from_port       = 22
     to_port         = 22
@@ -36,6 +36,6 @@ resource "aws_security_group" "allow_ssh_from_bastion" {
     security_groups = ["${aws_security_group.bastion.id}"]
   }
   tags {
-    Name = "allow_ssh_from_bastion"
+    Name = "allow_ssh_from_bastion-${var.name}"
   }
 }
