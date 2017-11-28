@@ -18,6 +18,7 @@ Pull requests welcome!
 - [lambda_splunk_forwarder](terraform/aws/modules/lambda_splunk_forwarder): A lambda function for forwarding Cloudwatch logs to a Splunk HTTP events collector.
 - [nat_gateway](terraform/aws/modules/nat_gateway): Creates multi-AZ NAT gateways, associated private subnets and route tables.
 - [ssh_bastion](terraform/aws/modules/ssh_bastion): SSH bastion host in an ASG with a fixed EIP.
+- [security_monkey](terraform/aws/modules/security_monkey): IAM role and associated policy to run Netflix's [Security Monkey](https://github.com/Netflix/security_monkey).
 - [vpc](terraform/aws/modules/vpc): A VPC setup that includes public and private subnets for each AZ, route tables.
 
 ## Examples
