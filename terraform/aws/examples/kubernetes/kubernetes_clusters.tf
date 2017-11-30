@@ -9,8 +9,8 @@ module "cluster1" {
   kops_s3_bucket_id           = "${aws_s3_bucket.kops.id}"
   vpc_id                      = "${module.vpc1.vpc_id}"
   instance_key_name           = "default-key"
-  route_table_ids             = ["${module.vpc1.public_aws_route_table_id}"]
-  subnet_cidr_blocks          = [
+  internet_gateway_id         = "${module.vpc1.internet_gateway_id}"
+  public_subnet_cidr_blocks   = [
     "172.20.12.0/24",
     "172.20.13.0/24",
     "172.20.14.0/24"
@@ -35,8 +35,8 @@ module "cluster2" {
   kops_s3_bucket_id           = "${aws_s3_bucket.kops.id}"
   vpc_id                      = "${module.vpc1.vpc_id}"
   instance_key_name           = "default-key"
-  route_table_ids             = ["${module.vpc1.public_aws_route_table_id}"]
-  subnet_cidr_blocks   = [
+  internet_gateway_id         = "${module.vpc1.internet_gateway_id}"
+  public_subnet_cidr_blocks   = [
     "172.20.18.0/24",
     "172.20.19.0/24",
     "172.20.20.0/24"

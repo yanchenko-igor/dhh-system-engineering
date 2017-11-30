@@ -4,5 +4,4 @@
 - Add example scaling policies to `terraform/aws/modules/autoscaling_group_elb_app`
 - Write a module for IAM users?
 - Write example RBAC for Kubernetes
-- Write example for Oauth
-- Adding variables for name of DNS record and instance
+- Write example for Kubernetes Oauth

@@ -8,10 +8,6 @@ data "aws_iam_policy_document" "security_monkey_assume_role_policy" {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
     principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
-    principals {
       type        = "AWS"
       identifiers = ["arn:aws:iam::${var.account_id}:role/${var.assume_role_name}"]
     }
@@ -63,9 +59,18 @@ data "aws_iam_policy_document" "security_monkey" {
       "ec2:describevpcendpoints",
       "ec2:describevpcpeeringconnections",
       "ec2:describevpcs",
+      "ec2:describevpnconnections",
+      "ec2:describevpngateways",
       "elasticloadbalancing:describeloadbalancerattributes",
       "elasticloadbalancing:describeloadbalancerpolicies",
       "elasticloadbalancing:describeloadbalancers",
+      "elasticloadbalancing:describelisteners",
+      "elasticloadbalancing:describerules",
+      "elasticloadbalancing:describesslpolicies",
+      "elasticloadbalancing:describetags",
+      "elasticloadbalancing:describetargetgroups",
+      "elasticloadbalancing:describetargetgroupattributes",
+      "elasticloadbalancing:describetargethealth",
       "es:describeelasticsearchdomainconfig",
       "es:listdomainnames",
       "iam:getaccesskeylastused",
@@ -90,12 +95,14 @@ data "aws_iam_policy_document" "security_monkey" {
       "iam:listpolicies",
       "iam:listrolepolicies",
       "iam:listroles",
+      "iam:listsamlproviders",
       "iam:listservercertificates",
       "iam:listsigningcertificates",
       "iam:listuserpolicies",
       "iam:listusers",
       "kms:describekey",
       "kms:getkeypolicy",
+      "kms:getkeyrotationstatus",
       "kms:listaliases",
       "kms:listgrants",
       "kms:listkeypolicies",
@@ -123,6 +130,7 @@ data "aws_iam_policy_document" "security_monkey" {
       "s3:getbucketversioning",
       "s3:getbucketwebsite",
       "s3:getlifecycleconfiguration",
+      "s3:listbucket",
       "s3:listallmybuckets",
       "s3:getreplicationconfiguration",
       "s3:getanalyticsconfiguration",
