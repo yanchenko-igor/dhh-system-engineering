@@ -20,13 +20,13 @@ output "master_elb_dns_name" {
   value = "${aws_elb.master.dns_name}"
 }
 output "master_asg_name" {
-  value = "${aws_autoscaling_group.master.name}"
+  value = "${aws_autoscaling_group.master.*.name}"
 }
 output "master_asg_id" {
-  value = "${aws_autoscaling_group.master.id}"
+  value = "${aws_autoscaling_group.master.*.id}"
 }
 output "master_asg_arn" {
-  value = "${aws_autoscaling_group.master.arn}"
+  value = "${aws_autoscaling_group.master.*.arn}"
 }
 output "cluster_fqdn" {
   value = "${local.cluster_fqdn}"
