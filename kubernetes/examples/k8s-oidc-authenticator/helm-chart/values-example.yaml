@@ -1,0 +1,19 @@
+ingress:
+  hostname: k8s-oauth.my-domain.com
+  whitelist_ips:
+    - 201.1.2.3
+    - 184.1.2.3
+
+oidc:
+  client_id: "2222222-xxxxxx.apps.googleusercontent.com"
+  client_secret: "xxxxxxx"
+  allowed_domain: my-org.com
+
+role_bindings:
+  cluster-admin:
+    - user1@my-domain.com
+    - user2@my-domain.com
+  namespaces:
+    default:
+      - user3@my-domain.com
+      - user4@my-domain.com

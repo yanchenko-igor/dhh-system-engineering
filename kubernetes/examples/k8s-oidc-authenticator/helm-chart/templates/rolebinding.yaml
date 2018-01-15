@@ -1,0 +1,25 @@
+{{- if .Values.role_bindings.namespaces }}
+
+# To fix
+#
+# {{- range $key, $val := .Values.role_bindings.namespaces }}
+# {{ $key }}: {{ $val | quote }}
+# {{- end }}
+#
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: RoleBinding
+# metadata:
+#   labels:
+#     app: xxxx
+#   name: xxxx
+#   namespace: default
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: xxxx
+# subjects:
+# - kind: ServiceAccount
+#   name: xxxxx
+#   namespace: default
+
+{{- end }}

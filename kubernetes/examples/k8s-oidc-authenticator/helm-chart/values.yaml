@@ -1,0 +1,26 @@
+deployment:
+  image: deliveryherotech/k8s-oidc-authenticator:0.1
+  imagePullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 1m
+      memory: 10Mi
+    limits:
+      cpu: 1m
+      memory: 10Mi
+
+  readiness_probe:
+    tcpSocket:
+      port: 8080
+    periodSeconds: 30
+    successThreshold: 1
+    failureThreshold: 2
+    timeoutSeconds: 5
+  liveness_probe:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 60
+    successThreshold: 1
+    failureThreshold: 2
+    timeoutSeconds: 5

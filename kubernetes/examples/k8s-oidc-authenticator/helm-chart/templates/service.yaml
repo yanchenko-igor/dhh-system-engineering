@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: k8s-oidc-authenticator
+    chartname: {{ .Chart.Name }}
+spec:
+  ports:
+  - name: "80"
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    chartname: {{ .Chart.Name }}
+    app: k8s-oidc-authenticator

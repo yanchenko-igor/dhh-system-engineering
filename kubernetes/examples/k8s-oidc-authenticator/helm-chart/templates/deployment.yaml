@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: k8s-oidc-authenticator
+    chartname: {{ .Chart.Name }}
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        chartname: {{ .Chart.Name }}
+        app: k8s-oidc-authenticator
+    spec:
+      containers:
+      - name: k8s-oidc-authenticator
+        image: {{ .Values.deployment.image }}
+        imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+        env:
+          - name: CALLBACK_URL
+            value: https://{{ .Values.ingress.hostname }}/callback
+          - name: CLIENT_ID
+            value: {{ .Values.oidc.client_id }}
+          - name: CLIENT_SECRET
+            value: {{ .Values.oidc.client_secret }}
+          - name: ALLOWED_DOMAIN
+            value: {{ .Values.oidc.allowed_domain }}
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+      restartPolicy: Always
