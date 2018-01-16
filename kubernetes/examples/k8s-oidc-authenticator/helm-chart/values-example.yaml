@@ -14,6 +14,6 @@ role_bindings:
     - user1@my-domain.com
     - user2@my-domain.com
   namespaces:
-    default:
+    my-namespace:
       - user3@my-domain.com
       - user4@my-domain.com

@@ -27,6 +27,8 @@ spec:
             value: {{ .Values.oidc.client_secret }}
           - name: ALLOWED_DOMAIN
             value: {{ .Values.oidc.allowed_domain }}
+          - name: ALLOWED_EMAIL_ADDRESSES
+            value: {{ template "allowed_email_addresses" . }}
         ports:
           - containerPort: 8080
             protocol: TCP
