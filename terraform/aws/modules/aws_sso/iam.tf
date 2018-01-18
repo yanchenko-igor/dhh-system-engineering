@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "sso_assume_role_policy" {
 
 # AdministratorAccess
 resource "aws_iam_role" "sso_administrator" {
-  name               = "sso-admininstrator"
+  name               = "sso-administrator"
   path               = "/sso/"
   assume_role_policy = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
 }
