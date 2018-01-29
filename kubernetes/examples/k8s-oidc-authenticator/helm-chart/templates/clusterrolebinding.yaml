@@ -8,7 +8,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: oidc-cluster-admin
+  name: cluster-admin
 subjects:
 {{- range .Values.role_bindings.cluster_admin }}
 - apiGroup: rbac.authorization.k8s.io

@@ -10,7 +10,7 @@ oidc:
   allowed_domain: my-org.com
 
 role_bindings:
-  cluster-admin:
+  cluster_admin:
     - user1@my-domain.com
     - user2@my-domain.com
   namespaces:
