@@ -31,11 +31,12 @@ And insert these lines:
 ```yaml
 spec:
   api:
-    kubeAPIServer:
-      authorizationMode: RBAC
-      oidcClientID:  <Client ID from GCP>
-      oidcIssuerURL: https://accounts.google.com
-      oidcUsernameClaim: email
+...
+  kubeAPIServer:
+    authorizationMode: RBAC
+    oidcClientID:  <Client ID from GCP>
+    oidcIssuerURL: https://accounts.google.com
+    oidcUsernameClaim: email
 ```
 
 If you don't have the `kubeAPIServer` section, create it.
