@@ -4,17 +4,29 @@ Kubernetes provides various methods to [authenticate against the API](https://ku
 
 Credit to [cu12](https://github.com/cu12/k8s-oidc-helper) for this adaptation of the original k8s-oidc-helper from micahhausler: https://github.com/micahhausler/k8s-oidc-helper
 
+With this chart you can allow access by email address to your cluster or to specific namespaces in your cluster.
+
+The chart will create:
+
+  - An ingress
+  - A deployment of an adapted version of the `k8s-oidc-helper`
+  - ClusterRoleBindings for full admin users
+  - RoleBindings for users who have access to specific namespaces
+
+![image](../../../kubernetes/examples/k8s-oidc-authenticator/img/image.png?raw=true)
+
 ## Security Properties
 
 **You should never use OIDC authentication without RBAC enabled**
 
 The setup described in this README checks authentication and authorization as follows:
+
   1. The k8s-oidc-authenticator will use google to authenticate a user (and the associated email address)
      as a valid and semi-current google user.
   2. The k8s-oidc-authenticator then checks the google-vetted identity against an expected domain and
      a whitelist of specific email addresses. If it matches it provides the user with *all* data
      needed to access the k8s cluster as this user or any other google user under his control.
-     **This must be coupled with email-specific access controls on the cluster to actually restrict access 
+     **This must be coupled with email-specific access controls on the cluster to actually restrict access
      to google users under the same organizational control as the cluster.**
   3. The cluster's role-based access control deployed via helm authorizes certain email addresses
      to perform administrative roles.
