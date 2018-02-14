@@ -7,6 +7,7 @@ resource "aws_lambda_function" "kubernetes_deployer" {
   timeout       = "120"
   memory_size   = "128"
   description   = "A function to update a Kubernetes deployment with new image tag"
+
   environment {
     variables = {
       AWS_ECR_REPOSITORY_BASE = "${var.aws_ecr_repository_base}"
@@ -29,8 +30,9 @@ resource "aws_lambda_permission" "kubernetes_deployer" {
 }
 
 resource "aws_cloudwatch_event_rule" "kubernetes_deployer" {
-  name          = "kubernetes_deployer_${var.name}"
-  description   = "Captures the ECR PutImage API request for ${var.name} kubernetes deployer"
+  name        = "kubernetes_deployer_${var.name}"
+  description = "Captures the ECR PutImage API request for ${var.name} kubernetes deployer"
+
   event_pattern = <<PATTERN
 {
   "source": [

@@ -5,7 +5,7 @@ resource "null_resource" "create_lambda_zip_file" {
 }
 
 resource "aws_lambda_function" "lambda_log_forwarder" {
-  depends_on    = [ "null_resource.create_lambda_zip_file" ]
+  depends_on    = ["null_resource.create_lambda_zip_file"]
   filename      = "${path.module}/lambda_log_forwarder.zip"
   function_name = "log_forwarder"
   role          = "${aws_iam_role.lambda_log_forwarder.arn}"
@@ -14,6 +14,7 @@ resource "aws_lambda_function" "lambda_log_forwarder" {
   timeout       = "10"
   memory_size   = "128"
   description   = "A function to forward logs from AWS to a Splunk HEC"
+
   environment {
     variables = {
       SPLUNK_HEC_TOKEN = "${var.splunk_hec_token}"

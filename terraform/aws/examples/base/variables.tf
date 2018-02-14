@@ -4,11 +4,12 @@ variable "aws_region" {
 
 variable "office_ips" {
   # Update with your trusted IP addresses
-  type    = "list"
+  type = "list"
+
   default = [
     "100.1.1.0/26",
     "100.1.2.0/29",
     "100.1.3.0/29",
-    "100.1.4.0/29"
+    "100.1.4.0/29",
   ]
 }

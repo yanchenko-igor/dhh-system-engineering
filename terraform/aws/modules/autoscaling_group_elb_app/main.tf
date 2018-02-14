@@ -8,11 +8,13 @@ resource "aws_autoscaling_group" "app" {
   force_delete         = true
   launch_configuration = "${aws_launch_configuration.app.name}"
   load_balancers       = ["${aws_elb.app.name}"]
+
   tag {
     key                 = "Name"
     value               = "${var.app_name}_app"
     propagate_at_launch = "true"
   }
+
   lifecycle {
     create_before_destroy = true
   }
@@ -26,10 +28,12 @@ resource "aws_launch_configuration" "app" {
   key_name             = "${var.instance_key_name}"
   iam_instance_profile = "${aws_iam_instance_profile.app.name}"
   user_data            = "${var.instance_user_data}"
+
   root_block_device {
     volume_type = "gp2"
     volume_size = 32
   }
+
   lifecycle {
     create_before_destroy = true
   }
@@ -40,12 +44,14 @@ resource "aws_elb" "app" {
   cross_zone_load_balancing = true
   security_groups           = ["${aws_security_group.app_elb.id}", "${var.sg_allow_http_s}"]
   subnets                   = ["${var.vpc_public_subnet_ids}"]
+
   listener {
-    instance_port      = 80
-    instance_protocol  = "http"
-    lb_port            = 80
-    lb_protocol        = "http"
+    instance_port     = 80
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
   }
+
   health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2
@@ -53,6 +59,7 @@ resource "aws_elb" "app" {
     target              = "TCP:80"
     interval            = 30
   }
+
   tags {
     Name = "${var.app_name}_app"
   }

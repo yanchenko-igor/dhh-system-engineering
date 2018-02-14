@@ -1,13 +1,13 @@
 resource "aws_autoscaling_group" "master" {
-  depends_on           = [ "null_resource.create_cluster" ]
+  depends_on           = ["null_resource.create_cluster"]
   count                = "${local.master_resource_count}"
   name                 = "${var.cluster_name}_master_${element(local.az_letters, count.index)}"
   vpc_zone_identifier  = ["${element(split(",", local.k8s_subnet_ids), count.index)}"]
   launch_configuration = "${element(aws_launch_configuration.master.*.id, count.index)}"
   load_balancers       = ["${aws_elb.master.name}"]
-  max_size         = 1
-  min_size         = 1
-  desired_capacity = 1
+  max_size             = 1
+  min_size             = 1
+  desired_capacity     = 1
 
   tag = {
     key                 = "KubernetesCluster"
@@ -29,19 +29,22 @@ resource "aws_autoscaling_group" "master" {
 }
 
 resource "aws_elb" "master" {
-  name            = "${var.cluster_name}-master"
-  subnets         = ["${aws_subnet.public.*.id}"]
-  idle_timeout    = 1200
+  name         = "${var.cluster_name}-master"
+  subnets      = ["${aws_subnet.public.*.id}"]
+  idle_timeout = 1200
+
   security_groups = [
     "${aws_security_group.master_elb.id}",
-    "${var.sg_allow_http_s}"
+    "${var.sg_allow_http_s}",
   ]
+
   listener {
     instance_port     = 443
     instance_protocol = "tcp"
     lb_port           = 443
     lb_protocol       = "tcp"
   }
+
   health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2
@@ -49,6 +52,7 @@ resource "aws_elb" "master" {
     target              = "TCP:443"
     interval            = 30
   }
+
   tags {
     Name              = "${var.cluster_name}_master"
     KubernetesCluster = "${local.cluster_fqdn}"
@@ -72,6 +76,7 @@ resource "aws_security_group" "master" {
   name        = "${var.cluster_name}-master"
   vpc_id      = "${var.vpc_id}"
   description = "${var.cluster_name} master"
+
   tags = {
     Name              = "${var.cluster_name}_master"
     KubernetesCluster = "${local.cluster_fqdn}"
@@ -98,12 +103,14 @@ resource "aws_security_group" "master_elb" {
   name        = "${var.cluster_name}-master-elb"
   vpc_id      = "${var.vpc_id}"
   description = "${var.cluster_name} master ELB"
+
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   tags {
     Name = "${var.cluster_name}_master_elb"
   }
@@ -112,6 +119,7 @@ resource "aws_security_group" "master_elb" {
 data "template_file" "master_user_data" {
   count    = "${local.master_resource_count}"
   template = "${file("${path.module}/data/nodeup_node_config.tpl")}"
+
   vars {
     cluster_fqdn           = "${local.cluster_fqdn}"
     kops_s3_bucket_id      = "${var.kops_s3_bucket_id}"
@@ -129,9 +137,9 @@ resource "aws_launch_configuration" "master" {
   iam_instance_profile = "${var.master_iam_instance_profile}"
   user_data            = "${file("${path.module}/data/user_data.sh")}${element(data.template_file.master_user_data.*.rendered, count.index)}"
 
-  security_groups      = [
+  security_groups = [
     "${aws_security_group.master.id}",
-    "${var.sg_allow_ssh}"
+    "${var.sg_allow_ssh}",
   ]
 
   root_block_device = {

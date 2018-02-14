@@ -12,10 +12,12 @@ resource "aws_nat_gateway" "nat_gateway" {
 resource "aws_route_table" "nat_private" {
   count  = "${length(data.aws_availability_zones.available.names)}"
   vpc_id = "${var.vpc_id}"
+
   route {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = "${element(aws_nat_gateway.nat_gateway.*.id, count.index)}"
   }
+
   tags {
     "Name" = "nat_private ${element(split(",", "a,b,c"), count.index)}"
   }
@@ -27,6 +29,7 @@ resource "aws_subnet" "nat_private" {
   cidr_block              = "${element(var.nat_private_subnet_cidrs, count.index)}"
   availability_zone       = "${element(data.aws_availability_zones.available.names, count.index)}"
   map_public_ip_on_launch = false
+
   tags {
     "Name" = "nat_private ${element(split(",", "a,b,c"), count.index)}"
   }

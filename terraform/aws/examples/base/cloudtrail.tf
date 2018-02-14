@@ -12,7 +12,8 @@ resource "aws_cloudtrail" "cloudtrail" {
 resource "aws_s3_bucket" "cloudtrail" {
   bucket        = "cloudtrail-${random_id.cloudtrail_s3_suffix.dec}"
   force_destroy = true
-  policy        = <<POLICY
+
+  policy = <<POLICY
 {
     "Version": "2012-10-17",
     "Statement": [

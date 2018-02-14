@@ -12,6 +12,7 @@ data "aws_iam_policy_document" "app_assume_role_policy" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
+
     principals {
       type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
@@ -36,5 +37,5 @@ data "aws_iam_policy_document" "app" {
 resource "aws_iam_policy" "app" {
   name        = "${var.app_name}_app"
   description = "Policy for ${var.app_name} app instances"
-  policy      =  "${data.aws_iam_policy_document.app.json}"
+  policy      = "${data.aws_iam_policy_document.app.json}"
 }

@@ -7,6 +7,7 @@ data "aws_iam_policy_document" "security_monkey_assume_role_policy" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
+
     principals {
       type        = "AWS"
       identifiers = ["arn:aws:iam::${var.account_id}:role/${var.assume_role_name}"]
@@ -15,23 +16,26 @@ data "aws_iam_policy_document" "security_monkey_assume_role_policy" {
 }
 
 resource "aws_iam_policy_attachment" "security_monkey" {
-  name       = "${var.role_name}_attachment"
-  roles      = [
-    "${aws_iam_role.security_monkey.name}"
+  name = "${var.role_name}_attachment"
+
+  roles = [
+    "${aws_iam_role.security_monkey.name}",
   ]
+
   policy_arn = "${aws_iam_policy.security_monkey.arn}"
 }
 
 resource "aws_iam_policy" "security_monkey" {
   name        = "${var.role_name}_policy"
   description = "Policy for security_monkey"
-  policy      =  "${data.aws_iam_policy_document.security_monkey.json}"
+  policy      = "${data.aws_iam_policy_document.security_monkey.json}"
 }
 
 data "aws_iam_policy_document" "security_monkey" {
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+
+    actions = [
       "acm:describecertificate",
       "acm:listcertificates",
       "cloudtrail:describetrails",
@@ -144,8 +148,9 @@ data "aws_iam_policy_document" "security_monkey" {
       "sns:listsubscriptionsbytopic",
       "sns:listtopics",
       "sqs:getqueueattributes",
-      "sqs:listqueues"
+      "sqs:listqueues",
     ]
+
     resources = ["*"]
   }
 }

@@ -12,17 +12,19 @@ resource "aws_iam_policy_attachment" "kubernetes_deployer" {
 resource "aws_iam_policy" "kubernetes_deployer" {
   name        = "kubernetes_deployer_${var.name}"
   description = "Policy for ${aws_lambda_function.kubernetes_deployer.function_name} Lambda function"
-  policy      =  "${data.aws_iam_policy_document.kubernetes_deployer.json}"
+  policy      = "${data.aws_iam_policy_document.kubernetes_deployer.json}"
 }
 
 data "aws_iam_policy_document" "kubernetes_deployer" {
   statement {
-    effect  = "Allow"
+    effect = "Allow"
+
     actions = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
-      "logs:PutLogEvents"
+      "logs:PutLogEvents",
     ]
+
     resources = ["*"]
   }
 }
@@ -31,6 +33,7 @@ data "aws_iam_policy_document" "kubernetes_deployer_assume_role_policy" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
+
     principals {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]

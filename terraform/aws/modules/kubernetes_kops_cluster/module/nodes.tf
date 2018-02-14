@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "node" {
-  depends_on           = [ "null_resource.create_cluster" ]
+  depends_on           = ["null_resource.create_cluster"]
   name                 = "${var.cluster_name}_node"
   launch_configuration = "${aws_launch_configuration.node.id}"
   max_size             = "${var.node_asg_max}"
@@ -10,11 +10,11 @@ resource "aws_autoscaling_group" "node" {
   # Ignore changes to autoscaling group min/max/desired as these attributes are
   # managed by the Kubernetes cluster autoscaler addon
   lifecycle {
-      ignore_changes = [
-        "max_size",
-        "min_size",
-        "desired_capacity"
-      ]
+    ignore_changes = [
+      "max_size",
+      "min_size",
+      "desired_capacity",
+    ]
   }
 
   tag = {
@@ -44,27 +44,28 @@ resource "aws_autoscaling_group" "node" {
 
 data "template_file" "node_user_data" {
   template = "${file("${path.module}/data/nodeup_node_config.tpl")}"
+
   vars {
     cluster_fqdn           = "${local.cluster_fqdn}"
     kops_s3_bucket_id      = "${var.kops_s3_bucket_id}"
     autoscaling_group_name = "nodes"
     kubernetes_master_tag  = ""
-
   }
 }
 
 resource "aws_launch_configuration" "node" {
-  name_prefix                 = "${var.cluster_name}-node"
-  image_id                    = "${data.aws_ami.k8s_ami.id}"
-  instance_type               = "${var.node_instance_type}"
-  key_name                    = "${var.instance_key_name}"
-  iam_instance_profile        = "${var.node_iam_instance_profile}"
-  security_groups             = [
+  name_prefix          = "${var.cluster_name}-node"
+  image_id             = "${data.aws_ami.k8s_ami.id}"
+  instance_type        = "${var.node_instance_type}"
+  key_name             = "${var.instance_key_name}"
+  iam_instance_profile = "${var.node_iam_instance_profile}"
+
+  security_groups = [
     "${aws_security_group.node.id}",
-    "${var.sg_allow_ssh}"
+    "${var.sg_allow_ssh}",
   ]
 
-  user_data                   = "${file("${path.module}/data/user_data.sh")}${data.template_file.node_user_data.rendered}"
+  user_data = "${file("${path.module}/data/user_data.sh")}${data.template_file.node_user_data.rendered}"
 
   root_block_device = {
     volume_type           = "gp2"
