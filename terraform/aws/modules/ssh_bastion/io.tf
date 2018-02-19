@@ -34,6 +34,10 @@ output "allow_ssh_from_bastion_sg_id" {
   value = "${aws_security_group.allow_ssh_from_bastion.id}"
 }
 
-output "bastion_aws_iam_role" {
+output "bastion_aws_iam_role_id" {
   value = "${aws_iam_role.bastion_ec2_role.id}"
+}
+
+output "bastion_aws_iam_role_arn" {
+  value = "${aws_iam_role.bastion_ec2_role.arn}"
 }
