@@ -1,20 +1,16 @@
 # Delivery Hero System Engineering
 
-This repository contains [Terraform](https://www.terraform.io/) modules, Kubernetes configuration and other best practice examples to give a head start when building a new environment on AWS or Kubernetes.
+This repository contains [Terraform](https://www.terraform.io/) modules, Kubernetes configuration and other best practice examples to give groups within DH a head start when building a new environment on AWS or Kubernetes.
 
 The intended audience is teams or projects that are starting with AWS or Kubernetes and want to begin with a good design.
 
 Pull requests welcome!
 
-## Guides
-
-- [terraform-kubernetes-getting-started](docs/terraform-kubernetes-getting-started.md): A guide to getting started with Kubernetes on AWS using Terraform. Includes AWS and Kubernetes configuration and running an example application.
-
 ## Terraform modules
 
 - [aws_sso](terraform/aws/modules/aws_sso): Creates an Identity Provider in IAM and some default roles to be used for SSO.
 - [autoscaling_group_elb_app](terraform/aws/modules/autoscaling_group_elb_app): An example of EC2 autoscaling group and ELB.
-- [kubernetes_kops_cluster](terraform/aws/modules/kubernetes_kops_cluster): A Kubernetes cluster with multi-AZ master based on [kops](https://github.com/kubernetes/kops).
+- [kubernetes_kops_cluster](https://github.com/FutureSharks/tf-kops-cluster): A Kubernetes cluster with multi-AZ master based on [kops](https://github.com/kubernetes/kops).
 - [lambda_kubernetes_deployer](terraform/aws/modules/lambda_kubernetes_deployer): A lambda function that deploys to a Kubernetes cluster when a container image is pushed to an ECR repository.
 - [lambda_splunk_forwarder](terraform/aws/modules/lambda_splunk_forwarder): A lambda function for forwarding Cloudwatch logs to a Splunk HTTP events collector.
 - [nat_gateway](terraform/aws/modules/nat_gateway): Creates multi-AZ NAT gateways, associated private subnets and route tables.
@@ -24,8 +20,8 @@ Pull requests welcome!
 
 ## Examples
 
-- [base](terraform/aws/examples/base): A good starting point with a VPC and related resources, SSH bastion, some default security groups and S3 bucket for Terraform state.
-- [kubernetes](terraform/aws/examples/kubernetes): Same as `base` example but with shared kubernetes resources and 2 kubernetes clusters added.
+- [base](terraform/aws/examples/base): A good Terraform starting point with a VPC and related resources, SSH bastion, some default security groups and S3 bucket for Terraform state.
+- [kubernetes](https://github.com/FutureSharks/tf-kops-cluster/tree/master/example): A complete Terraform example with VPC resources and 2 Kubernetes clusters.
 
 ## Kubernetes Examples
 
