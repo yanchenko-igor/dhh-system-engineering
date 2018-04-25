@@ -1,5 +1,9 @@
 variable "idp_data_file_path" {}
 
+variable "role_max_session_duration" {
+  default = 43200
+}
+
 output "saml_provider_arn" {
   value = "${aws_iam_saml_provider.google.arn}"
 }

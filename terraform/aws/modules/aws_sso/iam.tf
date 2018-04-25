@@ -17,9 +17,10 @@ data "aws_iam_policy_document" "sso_assume_role_policy" {
 
 # AdministratorAccess
 resource "aws_iam_role" "sso_administrator" {
-  name               = "sso-administrator"
-  path               = "/sso/"
-  assume_role_policy = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  name                 = "sso-administrator"
+  path                 = "/sso/"
+  assume_role_policy   = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy_attachment" "sso_administrator" {
@@ -29,9 +30,10 @@ resource "aws_iam_role_policy_attachment" "sso_administrator" {
 
 # ReadOnlyAccess
 resource "aws_iam_role" "sso_readonly" {
-  name               = "sso-readonly"
-  path               = "/sso/"
-  assume_role_policy = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  name                 = "sso-readonly"
+  path                 = "/sso/"
+  assume_role_policy   = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy_attachment" "sso_readonly" {
@@ -41,9 +43,10 @@ resource "aws_iam_role_policy_attachment" "sso_readonly" {
 
 # AmazonEC2FullAccess
 resource "aws_iam_role" "sso_ec2fullaccess" {
-  name               = "sso-ec2fullaccess"
-  path               = "/sso/"
-  assume_role_policy = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  name                 = "sso-ec2fullaccess"
+  path                 = "/sso/"
+  assume_role_policy   = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy_attachment" "ec2fullaccess" {
@@ -53,9 +56,10 @@ resource "aws_iam_role_policy_attachment" "ec2fullaccess" {
 
 # SystemAdministrator
 resource "aws_iam_role" "sso_sysadmin" {
-  name               = "sso-sysadmin"
-  path               = "/sso/"
-  assume_role_policy = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  name                 = "sso-sysadmin"
+  path                 = "/sso/"
+  assume_role_policy   = "${data.aws_iam_policy_document.sso_assume_role_policy.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy_attachment" "sysadmin" {
