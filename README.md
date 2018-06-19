@@ -17,6 +17,7 @@ Pull requests welcome!
 - [ssh_bastion](terraform/aws/modules/ssh_bastion): SSH bastion host in an ASG with a fixed EIP.
 - [security_monkey](terraform/aws/modules/security_monkey): IAM role and associated policy to run Netflix's [Security Monkey](https://github.com/Netflix/security_monkey).
 - [vpc](terraform/aws/modules/vpc): A VPC setup that includes public and private subnets for each AZ, route tables.
+- [EKS](terraform/aws/modules/eks): Terraform modules to create EKS master and nodes.
 
 ## Examples
 
