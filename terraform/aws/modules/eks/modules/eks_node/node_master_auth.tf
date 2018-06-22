@@ -23,9 +23,4 @@ ${local.node_auth_config_map}
 EOF
 EOD
   }
-
-  provisioner "local-exec" {
-    when    = "destroy"
-    command = "KUBECONFIG=${var.kubeconfig_path} kubectl -n kube-system delete configmap aws-auth"
-  }
 }
