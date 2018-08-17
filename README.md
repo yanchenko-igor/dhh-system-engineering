@@ -14,15 +14,11 @@ Pull requests welcome!
 - [lambda_kubernetes_deployer](terraform/aws/modules/lambda_kubernetes_deployer): A lambda function that deploys to a Kubernetes cluster when a container image is pushed to an ECR repository.
 - [lambda_splunk_forwarder](terraform/aws/modules/lambda_splunk_forwarder): A lambda function for forwarding Cloudwatch logs to a Splunk HTTP events collector.
 - [nat_gateway](terraform/aws/modules/nat_gateway): Creates multi-AZ NAT gateways, associated private subnets and route tables.
-- [ssh_bastion](terraform/aws/modules/ssh_bastion): SSH bastion host in an ASG with a fixed EIP.
+- [ssh_bastion](https://github.com/deliveryhero/tf-ssh-bastion): SSH bastion host in an ASG with a fixed EIP.
 - [security_monkey](terraform/aws/modules/security_monkey): IAM role and associated policy to run Netflix's [Security Monkey](https://github.com/Netflix/security_monkey).
-- [vpc](terraform/aws/modules/vpc): A VPC setup that includes public and private subnets for each AZ, route tables.
-- [EKS](terraform/aws/modules/eks): Terraform modules to create EKS master and nodes.
-
-## Examples
-
-- [base](terraform/aws/examples/base): A good Terraform starting point with a VPC and related resources, SSH bastion, some default security groups and S3 bucket for Terraform state.
-- [kubernetes](https://github.com/FutureSharks/tf-kops-cluster/tree/master/example): A complete Terraform example with VPC resources and 2 Kubernetes clusters.
+- [vpc](https://github.com/terraform-aws-modules/terraform-aws-vpc): A very flexible VPC module.
+- [EKS](https://github.com/terraform-aws-modules/terraform-aws-eks): Terraform module to create EKS master and nodes.
+- [RDS Aurora](https://github.com/terraform-aws-modules/terraform-aws-rds-aurora): Terraform module to create an RDS Aurora cluster.
 
 ## Kubernetes Examples
 
@@ -31,7 +27,6 @@ Pull requests welcome!
 - [Ingress Controller](kubernetes/examples/ingress): Using an Ingress controller and resource to split traffic across multiple applications.
 - [ExternalDNS](kubernetes/examples/external-dns): A tool that automatically creates DNS records for Kubernetes resources.
 - [Kubernetes Best Practices](https://speakerdeck.com/thesandlord/kubernetes-best-practices): A great presentation from a Google engineer.
-- [Kubernetes Autoscaling](kubernetes/examples/autoscaling): How to set up autoscaling for both deployment and cluster nodes.
 - [Kubernetes OpenID Connect authenticator](kubernetes/examples/k8s-oidc-authenticator): API Authentication using Google OIDC
 - [Kubernetes dashboard with OAuth2](kubernetes/examples/dashboard-oauth): Run the Kubernetes dashboard behind OAuth2
 
@@ -56,16 +51,3 @@ https://github.com/FutureSharks/invokust
 #### Helm
 
 [Helm](https://github.com/kubernetes/helm) is a powerful tool for creating templates for Kubernetes resources, creating reproducible builds or for packaging and installing predefined configurations for services.
-
-## Dos and Don'ts
-
-- Do make pull requests to this repository.
-- Don't bother using a NAT gateway unless you specifically need a fixed source IP address for outgoing traffic.
-- Do enable [MFA](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) for your IAM accounts.
-- Do store your Terraform state in a bucket.
-- Do use an internal Route53 zone to hold records for RDS endpoints, ES endpoints, Elasticache endpoints etc.
-- Do terminate SSL on ELBs and forward as HTTP in VPC. This means you never need to deal with SSL or certificates on instances.
-- Do use a SSH bastion for all SSH connections and restrict SSH access by IP ranges.
-- Consider registering an external domain in Route53. It only costs a few dollars and you can have a free SSL certificate. Then use this domain and certificate for all external ELBs.
-- Don't have instances that are not part of an Austoscaling Group.
-- Do write [Terraform modules](https://www.terraform.io/docs/configuration/modules.html) to reduce duplicated code.
