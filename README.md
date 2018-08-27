@@ -8,7 +8,7 @@ Pull requests welcome!
 
 ## Terraform modules
 
-- [aws_sso](terraform/aws/modules/aws_sso): Creates an Identity Provider in IAM and some default roles to be used for SSO.
+- [aws_sso](https://github.com/deliveryhero/tf-aws-saml-sso): Creates an Identity Provider in IAM and some default roles to be used for SSO.
 - [autoscaling_group_elb_app](terraform/aws/modules/autoscaling_group_elb_app): An example of EC2 autoscaling group and ELB.
 - [kubernetes_kops_cluster](https://github.com/FutureSharks/tf-kops-cluster): A Kubernetes cluster with multi-AZ master based on [kops](https://github.com/kubernetes/kops).
 - [lambda_kubernetes_deployer](terraform/aws/modules/lambda_kubernetes_deployer): A lambda function that deploys to a Kubernetes cluster when a container image is pushed to an ECR repository.
