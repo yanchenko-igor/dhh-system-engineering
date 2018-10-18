@@ -35,7 +35,7 @@ func init() {
 }
 
 const oauthURL = "https://accounts.google.com/o/oauth2/auth?redirect_uri=%s&response_type=code&client_id=%s&scope=openid+email+profile&approval_prompt=force&access_type=offline"
-const tokenURL = "https://www.googleapis.com/oauth2/v3/token"
+const tokenURL = "https://oauth2.googleapis.com/token"
 const userInfoURL = "https://www.googleapis.com/oauth2/v1/userinfo"
 const idpIssuerURL = "https://accounts.google.com"
 
